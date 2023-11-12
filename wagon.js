@@ -96,7 +96,7 @@ fetch(`http://localhost:5000/api/wagnums`)
                         })
                 }
                 const buildWagonPath = (wagnum) => {
-                    fetch(`http://localhost:5000/api/stations/path?start_station_id=${wagnum.ST_ID_DISL}&end_station_id=${wagnum.TRAIN_INDEX.split('-')[2]}`)
+                    fetch(`http://localhost:5000/api/stations/path?start_station_id=${wagnum.ST_ID_DISL}&end_station_id=${wagnum.ST_ID_DEST}`)
                         .then(res => {
                             if (res.ok) {
                                 // wagnumMarker.removeEventListener('click', buildWagonPath);
@@ -160,7 +160,7 @@ fetch(`http://localhost:5000/api/wagnums`)
                                 </tr>
                             </thead>
                             <tbody>
-                            ${wagnums.map(({ station, wagnum }) => '<tr><td>' + (wagnum.WAGNUM) + '</td><td>' + wagnum.ST_ID_DISL + '</td><td><button onclick="globalThis.buildWagonPath({ST_ID_DISL:\''+wagnum.ST_ID_DISL+'\',TRAIN_INDEX:\''+train_index+'\'})">пункт назначения</buttom></td></tr>').join('')}
+                            ${wagnums.map(({ station, wagnum }) => '<tr><td>' + (wagnum.WAGNUM) + '</td><td>' + wagnum.ST_ID_DEST + '</td><td><button onclick="globalThis.buildWagonPath({ST_ID_DEST:\''+wagnum.ST_ID_DEST+'\',ST_ID_DISL:\''+wagnum.ST_ID_DISL+'\'})">пункт назначения</buttom></td></tr>').join('')}
                             </tbody>
                             </table>
                         <br><br>
